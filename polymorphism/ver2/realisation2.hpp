@@ -9,11 +9,11 @@ struct realisation2: store{
        
        void create(int b,int d,std::string c);
        void update(int c2,int a,int b,std::string c);
-       static bool srt(std::shared_ptr<realisation2> &x,std::shared_ptr<realisation2> &y);
+       static bool srt(std::unique_ptr<store> &x,std::unique_ptr<store> &y);
        void printstack();
        ~realisation2(){
             str.clear();
        }
        private:
-       std::list<std::shared_ptr<realisation2>> str;
+       std::list<std::unique_ptr<store>> str;
 };

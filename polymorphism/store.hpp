@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <chrono>
+#include <algorithm>
 
 class store{
 public:   

@@ -25,6 +25,34 @@ std::string store::get_type(){
    return type;
 }
 
+//Метод для выполнения перестановки удаляемого элемента в конец вектора.
+std::vector<store*>::iterator realisation1::remove_nth(std::vector<store*>::iterator p,std::vector<store*>::iterator q, size_t n)
+{
+    std::vector<store*>::iterator a,c1,r,c,c2;
+    size_t i=0,i1=0,j=0;
+    r=p;
+    if(std::distance(p,q)!=0){
+    for(a=p;a!=q;++a){
+        if(i==n){
+           c2=a;
+           c2++;
+           for(c1=a;c2!=q;++c1){
+              std::swap(*c1,*(c2++));
+
+            }
+           i1=i1+1;
+        }
+        i=i+1;
+    }
+    for(j=0;j<(i-i1);j=j+1){
+       ++r;
+    }
+    return r;
+    } else{
+      return p;
+    }
+}
+
 //Функция для удаления заявки. На вход принимается номер заявки которую нужно удалить
 void realisation1::deletev(int c1){
  //stockstack* h;
@@ -35,7 +63,7 @@ void realisation1::deletev(int c1){
     //Обнуление указателя на адрес
     bp.at(c1)=nullptr;
     //Удаление элемента из вектора
-    bp.erase(bp.begin()+c1);
+    bp.erase(remove_nth(bp.begin(),bp.end(),c1),bp.end());
  } else {
     std::cout<<"error\n";
     exit(1);
